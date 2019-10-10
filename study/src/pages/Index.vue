@@ -3,7 +3,8 @@
     
     <input v-model = "message"   @keyup = "handleKeyup"/>
     <button @click ="clearMessage">Reset</button>
- <H5> {{message}} </H5>
+  <H5 v-if="message.legth">{{message}} </H5>
+  <H4 v-else>No Message</H4>
   </q-page>
 </template>
 
@@ -17,16 +18,24 @@ data(){
 },
 
 //menghapus menggunakan method
-methods:{
-  clearMessage(){
+methods:
+{
+  clearMessage()
+  {
     this.message=''
   },
 
-handleKeyup(e){
-  if (e.keyCode == 27){
-    this.message = 'ESC'
+  handleKeyup(e)
+  {
+    if (e.keyCode == 27)
+    {
+      this.message = 'ESC'
+    }
+  },
+  uppercaseMessage()
+  {
+    return this.message.toUpperCase()
   }
-}
 }
 }
 </script>
